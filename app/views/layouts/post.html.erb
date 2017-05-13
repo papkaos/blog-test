@@ -1,10 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-</p>
-
-<p>
-  <strong>Body:</strong>
-</p>
-
+<%= yield :head %>
+<%= yield :controls %>
+<%= yield :comments %>
+<%= yield :form %>
