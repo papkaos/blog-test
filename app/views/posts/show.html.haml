@@ -1,3 +1,6 @@
+
+
+
 %p#notice= notice
 
 %p
@@ -13,7 +16,8 @@
 = link_to 'Back', posts_path
 
 %h3 Comments
-#comments
+#comments(data-scroll-pagination="#{post_comments_url(post_id: @post.id)}")
+-##comments
   - @post.comments.each do |comment|
     = render partial: '_blocks/comment', locals: { comment: comment }
 
@@ -22,3 +26,5 @@
   %textarea{:rows => '4', :cols => '50', :name => 'body', :required => '' }
   %br
   %input{:type => 'submit', :name => 'submit_button', :value => 'Comment'}
+
+  / jasdasdjkasd.init()
