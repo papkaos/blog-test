@@ -1,7 +1,11 @@
 /**
  * Created by alexander on 5/15/17.
  */
-$(function () {
+document.addEventListener("turbolinks:load", function() {
+
+    function disableOnScroll() {
+        $(window).off('scroll', scrollHandler);
+    }
 
     $('[data-scroll-pagination]').each(function () {
         var $pagination = $(this);
@@ -9,24 +13,24 @@ $(function () {
         var url = $pagination.data('scrollPagination') + '?page=';
 
         init();
-        
+
         function init() {
 
-            loadComments(url, page);
+            loadComments();
 
-            $(window).on('scroll', function () {
-
-                if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                    page++;
-                    loadComments(url, page);
-                }
+            $(window).on('scroll', scrollHandler);
+            $(document).on('page:before-change turbolinks:before-visit', function() {
+                disableOnScroll();
             });
-
         }
-        
-        function loadComments(url, page) {
-            $.get(url + page, function (data, status) {
-                console.log(data);
+
+        function loadComments() {
+            $.get(url + page, function (data) {
+
+                if (data.length === 0) {
+                    disableOnScroll();
+                    return;
+                }
 
                 data.forEach(function (elem) {
                     $pagination.append('<p>' + elem.body + '</p><p>' + elem.created_at + '</p><hr>');
@@ -34,9 +38,13 @@ $(function () {
 
             });
         }
-        
-        // todo page++
+
+        function scrollHandler() {
+            if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+                ++page;
+                loadComments();
+            }
+        }
+
     });
-
 });
-

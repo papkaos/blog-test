@@ -1,8 +1,5 @@
 %form{:id => 'registration-form', :action => url_for(controller: :users, action: :create), :method => 'post', :novalidate => ''}
-  -#%label{:for => 'first-name'} First name:
-  -#%input{:type => 'text', :name => 'first-name', :id => 'first-name'}
-  -#%label{:for => 'last-name'} Last name:
-  -#%input{:type => 'text', :name => 'last-name', :id => 'last-name'}
+  = hidden_field_tag :authenticity_token, form_authenticity_token
 
   %label{:for => 'email-user'} Email:
   %input{:type => 'email', :name => 'email-user', :id => 'email-user'}
@@ -12,5 +9,6 @@
 
   %label{:for => 'password-confirm'} Confirm password:
   %input{:type => 'password', :name => 'password-confirm', :id => 'password-confirm'}
+  %br
   %br
   %input{:type => 'submit', :id => 'submit-button', :value => 'Sign up'}

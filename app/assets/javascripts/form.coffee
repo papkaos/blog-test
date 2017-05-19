@@ -21,12 +21,12 @@ class FormComment
       url: url
       data: @formComment.serialize()
       success: (data) =>
-        $('#comments').append '<p>' + data.body + '</p><p>' + data.formatted_created_date + '</p><hr>'
+        $('[data-scroll-pagination]').append '<p>' + data.body + '</p><p>' + data.formatted_created_date + '</p><hr>'
 
         @formComment.trigger 'reset'
 
     undefined
 
-$ ->
+document.addEventListener 'turbolinks:load', ->
   formComment = new FormComment('#new-comment')
   formComment.init()
