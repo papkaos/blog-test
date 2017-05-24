@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  get '/users/unique/:email', to: 'users#unique'
+  get '/users/validate/', to: 'users#validate'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

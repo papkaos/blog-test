@@ -6,10 +6,10 @@ document.addEventListener("turbolinks:load", function () {
 
     $registrationForm.validate({
         rules: {
-            'email-user': {
+            'email': {
                 required: true,
                 email: true,
-                remote: 'http://localhost:3000'
+                remote: 'http://localhost:3000/users/validate'
             },
             'password-user': {
                 required: true,
@@ -22,7 +22,7 @@ document.addEventListener("turbolinks:load", function () {
             }
         },
         messages: {
-            'email-user': {
+            'email': {
                 required: 'Please enter your email',
                 email: 'Please enter valid email address',
                 remote: 'This email already taken'
