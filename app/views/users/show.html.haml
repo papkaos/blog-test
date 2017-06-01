@@ -1,0 +1,13 @@
+.user-profile
+  - if @user.first_name.present?
+    %span Firstname:
+    %h2= @user.first_name
+  - if @user.last_name.present?
+    %span Lastname:
+    %h2= @user.last_name
+  .user-email Email:
+  %h3= @user.email
+  .created Created:
+  %div= @user.created_at
+  %br
+  = link_to 'Edit', edit_user_url(@user)

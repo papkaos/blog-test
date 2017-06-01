@@ -6,37 +6,41 @@ document.addEventListener("turbolinks:load", function () {
 
     $registrationForm.validate({
         rules: {
-            'email': {
+            'user[email]': {
                 required: true,
                 email: true,
-                remote: 'http://localhost:3000/users/validate'
+                remote: {
+                    url: "/users/validate",
+                    type: "post"
+                }
             },
-            'password-user': {
+            'user[password]': {
                 required: true,
                 minlength: 6
             },
-            'password-confirm': {
+            'user[password_confirm]': {
                 required: true,
                 minlength: 6,
-                equalTo: '#password-user'
+                equalTo: '#user_password'
             }
         },
         messages: {
-            'email': {
+            'user[email]': {
                 required: 'Please enter your email',
                 email: 'Please enter valid email address',
                 remote: 'This email already taken'
             },
-            'password-user': {
+            'user[password]': {
                 required: 'Please enter your password',
                 minlength: 'Enter at least 6 characters'
             },
-            'password-confirm': {
+            'user[password_confirm]': {
                 required: 'Please repeat your password',
                 minlength: 'Enter at least 6 characters',
                 equalTo: 'Password need to match first'
             }
-        }
+        },
+        onkeyup: false
     });
 
 });

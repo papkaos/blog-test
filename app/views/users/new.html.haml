@@ -1,14 +1,24 @@
-%form{:id => 'registration-form', :action => url_for(controller: :users, action: :create), :method => 'post', :novalidate => ''}
-  = hidden_field_tag :authenticity_token, form_authenticity_token
+-#%form{:id => 'registration-form', :action => url_for(controller: :users, action: :create), :method => 'post', :novalidate => ''}
+-#  = hidden_field_tag :authenticity_token, form_authenticity_token
+-#
+-#  %label{:for => 'email-user'} Email:
+-#  %input{:type => 'email', :name => 'email', :id => 'email-user'}
+-#
+-#  %label{:for => 'password-user'} Password:
+-#  %input{:type => 'password', :name => 'password-user', :id => 'password-user'}
+-#
+-#  %label{:for => 'password-confirm'} Confirm password:
+-#  %input{:type => 'password', :name => 'password-confirm', :id => 'password-confirm'}
+-#  %br
+-#  %br
+-#  %input{:type => 'submit', :id => 'submit-button', :value => 'Sign up'}
 
-  %label{:for => 'email-user'} Email:
-  %input{:type => 'email', :name => 'email', :id => 'email-user'}
-
-  %label{:for => 'password-user'} Password:
-  %input{:type => 'password', :name => 'password-user', :id => 'password-user'}
-
-  %label{:for => 'password-confirm'} Confirm password:
-  %input{:type => 'password', :name => 'password-confirm', :id => 'password-confirm'}
-  %br
-  %br
-  %input{:type => 'submit', :id => 'submit-button', :value => 'Sign up'}
+= form_for :user, :url => {:action => "create"}, :html => { :id => "registration-form"} do |f|
+  = f.label :email
+  = f.text_field :email
+  = f.label :password
+  = f.password_field :password
+  = f.label :password_confirm
+  = f.password_field :password_confirm
+  -#= f.text_area :body, size: "60x12"
+  = f.submit "Sign up"

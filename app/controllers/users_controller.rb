@@ -4,16 +4,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user
+    @user = User.find(params[:id])
   end
 
   def new
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def create
+    @user = User.create(params.require(:user).permit(:email, :password))
+    respond_to do |format|
+      format.html { redirect_to @user, notice: 'You\'re successful signed up.' }
+    end
   end
 
   def update
@@ -23,13 +28,9 @@ class UsersController < ApplicationController
   end
 
   def validate
-    @user = User.find_by(params[:email])
-    # respond_to do |format|
-    #   format.json { render :show }
-    # end
-
-    # render json: @user
-
     # @user = User.find_by(params[:email])
+    # binding.pry
+    @user = User.find_by(email: params[:user][:email])
+    render json: @user.nil?
   end
 end
