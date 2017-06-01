@@ -1,14 +1,9 @@
 %h1 edit
-= form_for @user, :html => { :id => "registration-form"} do |f|
+= form_for @user, :html => { :id => "edit-form"} do |f|
   = f.label :first_name
   = f.text_field :first_name
   = f.label :last_name
   = f.text_field :last_name
   = f.label :email
   = f.text_field :email
-  -#= f.label :password
-  -#= f.password_field :password
-  -#= f.label :password_confirm
-  -#= f.password_field :password_confirm
-  -#= f.text_area :body, size: "60x12"
   = f.submit "Save"

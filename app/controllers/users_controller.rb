@@ -22,6 +22,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.update(params.require(:user).permit(:first_name, :last_name, :email))
+    respond_to do |format|
+      # format.html { redirect_to @user, notice: 'You\'re successful signed up.' }
+      format.html { render :show }
+    end
   end
 
   def destroy
