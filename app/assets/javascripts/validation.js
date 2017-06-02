@@ -1,6 +1,3 @@
-/**
- * Created by alexander on 5/18/17.
- */
 document.addEventListener("turbolinks:load", function () {
     var $registrationForm = $('#registration-form');
 

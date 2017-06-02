@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :users do
     post 'validate', on: :collection
+    post 'validate_email/:id', to: 'users#validate_email', on: :collection
   end
 
   # resources :users

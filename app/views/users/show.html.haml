@@ -1,9 +1,11 @@
 .user-profile
+  - if @user.avatar.present?
+    = image_tag @user.avatar
   - if @user.first_name.present?
-    %span Firstname:
+    %div Firstname:
     %h2= @user.first_name
   - if @user.last_name.present?
-    %span Lastname:
+    %div Lastname:
     %h2= @user.last_name
   .user-email Email:
   %h3= @user.email
