@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(params.require(:user).permit(:first_name, :last_name, :email))
+    @user.update(params.require(:user).permit(:first_name, :last_name, :email, :avatar))
     respond_to do |format|
       format.html { redirect_to @user }
     end

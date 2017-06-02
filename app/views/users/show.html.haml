@@ -1,6 +1,6 @@
 .user-profile
-  - if @user.avatar.present?
-    = image_tag @user.avatar
+  - if @user.avatar.url.present?
+    = image_tag @user.avatar.url, {width: "120px"}
   - if @user.first_name.present?
     %div Firstname:
     %h2= @user.first_name

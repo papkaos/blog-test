@@ -1,6 +1,7 @@
 - validate_path = url_for(controller: "users", action: "validate_email")
 %h1 edit
-= form_for @user, :html => { :id => "edit-form", "data-validate-email" => validate_path} do |f|
+= form_for @user, :html => { :id => "edit-form", "data-validate-email" => validate_path, multipart: true} do |f|
+  = f.file_field :avatar
   = f.label :first_name
   = f.text_field :first_name
   = f.label :last_name

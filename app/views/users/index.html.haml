@@ -1,4 +1,6 @@
 - @users.each do |user|
+  - if user.avatar.url.present?
+    = image_tag user.avatar.url, {width: "50px"}
   .user-name= user.first_name
   .user-surname= user.last_name
   .user-email= user.email
