@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class User::CommentsController < User::ApplicationController
   def index
     @comments = Post.find(params[:post_id]).comments.page(params[:page]).per(10)
     render json: @comments

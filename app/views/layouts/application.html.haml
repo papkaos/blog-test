@@ -8,5 +8,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     / <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
   %body
-    = render 'layouts/header'
-    = yield
+    .wrapper-page
+      = render 'layouts/header'
+      .wrapper-content
+        = yield

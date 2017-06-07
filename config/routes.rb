@@ -1,14 +1,27 @@
 Rails.application.routes.draw do
-  resources :posts do
-    resources :comments
+
+  scope module: :user do
+    root 'posts#index'
+
+    resources :posts do
+      resources :comments
+    end
+
+    resources :users do
+      post 'validate', on: :collection
+      post 'validate_email/:id', to: 'users#validate_email', on: :collection
+    end
+
+    get '/feed', :to => 'users#show'
+
   end
 
-  resources :users do
-    post 'validate', on: :collection
-    post 'validate_email/:id', to: 'users#validate_email', on: :collection
+  scope module: :guest do
+    get '/login', :to => 'login#login'
   end
 
-  # resources :users
+  resource :session, controller: :session, only: [:create, :destroy]
+
 
   # post '/users/validate', to: 'users#validate'
   # get '/users/validate', to: 'users#validate'
