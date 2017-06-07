@@ -10,6 +10,8 @@
   .user-email Email:
   %h3= @user.email
   .created Created:
-  %div= @user.created_at
+  %div= date_format(@user.created_at)
   %br
   = link_to 'Edit', edit_user_url(@user)
+  |
+  = link_to 'Back', users_path

@@ -1,0 +1,18 @@
+.hidden {
+  display: none;
+}
+
+.user-profile-avatar {
+  width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+input.user-avatar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500em;
+  height: 500em;
+  opacity: 0;
+}

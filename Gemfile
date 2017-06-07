@@ -27,7 +27,11 @@ gem 'kaminari'
 
 gem 'jquery-validation-rails'
 
+gem 'jquery-ui-rails'
+
 gem 'carrierwave'
+
+gem 'jquery-fileupload-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
