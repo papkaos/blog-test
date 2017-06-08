@@ -15,10 +15,10 @@ class User::UsersController < User::ApplicationController
   end
 
   def create
-    @user = User.create(params.require(:user).permit(:email, :password))
-    respond_to do |format|
-      format.html { redirect_to @user, notice: 'You\'re successful signed up.' }
-    end
+    # @user = User.create(params.require(:user).permit(:email, :password))
+    # respond_to do |format|
+    #   format.html { redirect_to @user, notice: 'You\'re successful signed up.' }
+    # end
   end
 
   def update

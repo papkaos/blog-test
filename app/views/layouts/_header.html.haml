@@ -1,5 +1,14 @@
 .header
+  .logo
+    %h2
+      = link_to 'Blogs', root_path
   .menu
-    = link_to 'Sign up', new_user_path
-    |
-    = link_to 'Login', login_path
+    - if @current_user.nil?
+      = link_to 'Sign up', signup_path
+      |
+      = link_to 'Login', login_path
+    - else
+      = link_to 'My Profile', user_path(@current_user.id)
+      |
+      = link_to 'Logout', session_path, method: :delete
+  .clearfix

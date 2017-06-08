@@ -3,12 +3,25 @@
   margin: 0 auto;
 }
 
+.clearfix {
+  clear: both;
+}
+
 .header {
   border-bottom: 1px solid #2E2F30;
   font-size: 14px;
   text-align: right;
   margin: 5px 0;
   padding: 5px 10px;
+
+  .logo {
+    float: left;
+  }
+
+  .menu {
+    float: right;
+    margin: 10px 0;
+  }
 }
 
 .wrapper-content {

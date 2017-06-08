@@ -12,11 +12,10 @@ class SessionController < ApplicationController
         format.json { render json: {status: "auth_error"} }
       end
     end
-    # respond_to do |format|
-    #   format.json { render json: {status: user} }
-    # end
   end
 
   def destroy
+    session.clear
+    redirect_to :login
   end
 end
