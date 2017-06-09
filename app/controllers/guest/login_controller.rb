@@ -7,8 +7,12 @@ class Guest::LoginController < Guest::ApplicationController
 
   def sign_up
     @user = User.create(params.require(:user).permit(:email, :password))
-    respond_to do |format|
-      format.html { redirect_to @user, notice: 'You\'re successful signed up.' }
-    end
+    SessionCreator.new(session).create(@user.email ,@user.password)
+    redirect_to @user
+  end
+
+  def validate
+    @user = User.find_by(email: params[:user][:email])
+    render json: @user.nil?
   end
 end

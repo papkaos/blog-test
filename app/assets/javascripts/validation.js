@@ -7,7 +7,7 @@ document.addEventListener("turbolinks:load", function () {
                 required: true,
                 email: true,
                 remote: {
-                    url: "/users/validate",
+                    url: "/signup/validate",
                     type: "post"
                 }
             },

@@ -1,0 +1,4 @@
+.filter
+  = form_for :filter do |f|
+    = f.select :filter, options_for_select([["By date", "created_at"], ["By title", "title"], ["By content", "body"], ["By comments", "comments"]],
+      params[:sort]), {}, { data: {"filter-posts": ""} }

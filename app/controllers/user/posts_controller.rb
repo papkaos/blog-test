@@ -5,6 +5,16 @@ class User::PostsController < User::ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    if params[:sort].present?
+      if params[:sort] != 'comments'
+        @posts = @posts.order(params[:sort])
+      else
+        @posts = @posts.left_joins(:comments).group("posts.id").order("COUNT(posts.id) DESC")
+      end
+    end
+
+    # @posts = Post.all
+    # @posts = Post.order(params[:sort])
 
   end
 

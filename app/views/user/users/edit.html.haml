@@ -4,6 +4,8 @@
   .user-profile-avatar
     - if @user.avatar.url.present?
       = image_tag @user.avatar.url, {width: "100%", data: {"avatar-edit" => ""}}
+    - else
+      %img{"data-avatar-edit"=>""}
     = f.file_field :avatar, class: ("user-avatar" if @user.avatar.url.present?), data: {"upload-button"=>""}
   = f.label :first_name
   = f.text_field :first_name

@@ -19,10 +19,10 @@ Rails.application.routes.draw do
     get '/login', :to => 'login#login'
     get '/signup', :to => 'login#sign_up_form'
     post '/login/sign_up', :to => 'login#sign_up'
+    post 'signup/validate', :to => 'login#validate'
   end
 
   resource :session, controller: :session, only: [:create, :destroy]
-
 
   # post '/users/validate', to: 'users#validate'
   # get '/users/validate', to: 'users#validate'

@@ -3,9 +3,8 @@ class SessionController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:session][:email], password: params[:session][:password])
+    @user = SessionCreator.new(session).create(params[:session][:email],params[:session][:password])
     if !@user.nil?
-      session[:current_user_id] = @user.id
       redirect_to @user
     else
       respond_to do |format|
